@@ -1,6 +1,10 @@
-<nav class="navbar bg-primary navbar-expand-lg " data-bs-theme="dark">
+<nav class="navbar bg-body-secondary navbar-expand-lg " >
     <div class="container">
-        <a class="navbar-brand" href="#">Navbar</a>
+        <a class="navbar-brand" href="#">
+            <img
+                width="70%" 
+                src="https://sdsb4d.app/logo-green.svg" alt="" srcset="">
+        </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -28,12 +32,14 @@
                 </li>
             </ul>
             <form class="d-flex" role="search">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Search</button>
+                <input class="form-control form-control-sm me-1" type="text" placeholder="Username" aria-label="Username">
+                <input class="form-control form-control-sm me-1" type="password" placeholder="Password" aria-label="Password">
+                <button class="btn btn-sm btn-primary me-1">Masuk</button>
+                <button class="btn btn-sm btn-primary">Daftar</button>
             </form>
         </div>
     </div>
 </nav>
-<div class="container">
-    <h1>Hello Semua</h1>
+<div class="container" style="margin-top: 10px;">
+    <img class="img-fluid" src="https://laskar303.co/images/upload-Slides-20221020093448.jpg" alt="" srcset="">
 </div>
