@@ -1,0 +1,12 @@
+version: '2'
+
+services:
+  frontend-whitelabel:
+    container_name: frontend-whitelabel
+    image: frontend-whitelabel:0.0.1
+    build: .
+    volumes:
+    - ./frontend-whitelabel:/app/frontend-whitelabel
+    ports:
+      - 2114:2114
+    restart: always
