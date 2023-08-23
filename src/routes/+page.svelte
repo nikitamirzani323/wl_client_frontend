@@ -1,5 +1,4 @@
 <script>
-    import Navbar from "$lib/Navbar.svelte";
     import Seo from "$lib/Seo.svelte";
 </script>
 <Seo 
@@ -7,7 +6,6 @@
     descp="SDSB4D Togel,Casino,Slot" 
     url=""
     type="Website" />
-<Navbar />
 <div class="container" style="margin-top: 10px;">
     <img class="img-fluid" src="https://laskar303.co/images/upload-Slides-20221020093448.jpg" alt="" srcset="">
     <div class="row" style="margin-top: 10px;padding:0px;">

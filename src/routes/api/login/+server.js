@@ -1,8 +1,8 @@
-import {PATH_API} from "$env/static/private"
+import { redis } from "$lib/server/redis";
+import {PATH_API,ID_AGEN} from "$env/static/private"
 
-export const POST = async({request,url}) => {
-    console.log(PATH_API)
-    const path_api = PATH_API+"api/init"
+export const POST = async({request}) => {
+    const path_api = PATH_API+"api/login"
     const object =  await request.json();
     const resdata = await fetch(path_api, {
         method: "POST",
@@ -10,13 +10,17 @@ export const POST = async({request,url}) => {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-            "client_hostname": url.host,
+            "idmasteragen": ID_AGEN,
+            "username": object.username,
+            "password": object.password,
+            "ipaddress": "145.16.21.2",
+            "timezone": "Asia/Jakarta",
         }),
     });
     const jsondata = await resdata.json();
     console.log(jsondata)
-    console.log(object.username)
-    console.log(object.password)
+    console.log(path_api)
+    redis.set(ID_AGEN+"-token", JSON.stringify(jsondata), "EX",86400);
     return new Response(JSON.stringify(jsondata),{
         headers:{
             "Content-Type":"application.json"

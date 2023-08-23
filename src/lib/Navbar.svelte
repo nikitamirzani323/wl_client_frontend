@@ -1,4 +1,8 @@
 <script>
+  import { redirect } from "@sveltejs/kit";
+
+    
+    export let data_token = "";
     let username = "";
     let password = "";
     
@@ -27,7 +31,8 @@
             });
             const json = await res.json();
             if (json.status == 200) {
-                
+                console.log(json.token)
+                window.location.href = "/";
             }
         }else{
             alert(msg)
@@ -67,19 +72,39 @@
                     <a class="nav-link disabled" aria-disabled="true">Disabled</a>
                 </li>
             </ul>
-            <form class="d-flex" role="search">
-                <input
-                    bind:value={username} 
-                    class="form-control form-control-sm me-1" 
-                    type="text" placeholder="Username" aria-label="Username">
-                <input
-                    bind:value={password} 
-                    class="form-control form-control-sm me-1" type="password" placeholder="Password" aria-label="Password">
-                <button on:click={() => {
-                        call_login();
-                    }} class="btn btn-sm btn-primary me-1">Masuk</button>
-                <button class="btn btn-sm btn-primary">Daftar</button>
-            </form>
+            {#if data_token == ""}
+                <form class="d-flex" role="search">
+                    <input
+                        bind:value={username} 
+                        class="form-control form-control-sm me-1" 
+                        type="text" placeholder="Username" aria-label="Username">
+                    <input
+                        bind:value={password} 
+                        class="form-control form-control-sm me-1" type="password" placeholder="Password" aria-label="Password">
+                    <button on:click={() => {
+                            call_login();
+                        }} class="btn btn-sm btn-primary me-1">Masuk</button>
+                    <button class="btn btn-sm btn-primary">Daftar</button>
+                </form>
+            {:else}
+                <div class="d-flex">
+                    <div class="d-flex flex-column me-3">
+                        <span>Joni</span>
+                        <span>1.000.000</span>
+                    </div>
+                    <i style="cursor: pointer; align-self-center" class="bi bi-arrow-clockwise me-3"></i>
+                    <div class="dropdown" style="cursor: pointer; align-self-center">
+                        <span class="dropdown-toggle"  data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="bi bi-person-circle"></i>
+                        </span>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="#">Profile</a></li>
+                            <li><a class="dropdown-item" href="#">Laporan Transaksi</a></li>
+                            <li><a class="dropdown-item" href="#">Referal</a></li>
+                        </ul>
+                    </div>
+                </div>
+            {/if}
         </div>
     </div>
 </nav>
