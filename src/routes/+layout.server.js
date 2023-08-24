@@ -9,7 +9,6 @@ export const load = async({url}) => {
     const seo_url = url.href
     const cached = await redis.get(ID_AGEN+"-token")
     let token = "";
-    console.log(cached)
     if(cached){
         const temp_cached = JSON.parse(cached)
         token = temp_cached.token

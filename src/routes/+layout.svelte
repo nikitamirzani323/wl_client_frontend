@@ -3,7 +3,6 @@
 
     export let data;
     const {token} = data;
-    console.log("token : "+token)
 </script>
 <Navbar data_token={token} />
 <slot />
