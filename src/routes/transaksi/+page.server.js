@@ -16,7 +16,7 @@ export const load = async({url,parent}) => {
     
 
     let {list_transaksi} = await loadData (PATH_API,PATH,token);
-    // console.log(list_transaksi)
+    console.log(list_transaksi)
     
     return {
         list_transaksi : list_transaksi,
@@ -25,10 +25,12 @@ export const load = async({url,parent}) => {
     }
 }
 async function loadData(path_api,path_host,auth_bearer){
-    const cached_listtransaksi = await redis.get("LISTRANSAKSI")
+    const cached_listtransaksi = await redis.get("LISTRANSAKSI"+"_"+ID_AGEN)
+    console.log(cached_listtransaksi)
     if(cached_listtransaksi){
         console.log("CACHE TRANSAKSI")
         const temp_data_listtransaksi_cached = JSON.parse(cached_listtransaksi)
+        // console.log(temp_data_listtransaksi_cached)
         return {
             list_transaksi : temp_data_listtransaksi_cached,
         }
@@ -48,7 +50,7 @@ async function loadData(path_api,path_host,auth_bearer){
         ]);
         const record_listtransaksi= await res_listtransaksi.json();
 
-        redis.set("TRANSAKSI", JSON.stringify(record_listtransaksi), "EX",86400);
+        redis.set("LISTRANSAKSI"+"_"+ID_AGEN, JSON.stringify(record_listtransaksi), "EX",86400);
         return {
             list_transaksi : record_listtransaksi,
         }

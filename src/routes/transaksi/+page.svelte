@@ -6,8 +6,8 @@
     if(token == ""){
         window.location.href = "/";
     }
-    let listbankmember = list_transaksi.listbankmember;
-    let listbankagen = list_transaksi.listbankagen;
+    let listbankmember = list_transaksi.listbankmember!=null?list_transaksi.listbankmember:[];
+    let listbankagen = list_transaksi.listbankagen!=null?list_transaksi.listbankagen:[];
     let deposit_idbanksumber_field = "";
     let deposit_idbanktujuan_field = "";
     let deposit_amount_field = 0;
