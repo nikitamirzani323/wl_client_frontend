@@ -20,7 +20,7 @@ export const POST = async({request}) => {
     const jsondata = await resdata.json();
     console.log(jsondata)
     console.log(path_api)
-    redis.set(ID_AGEN+"-token", JSON.stringify(jsondata), "EX",86400);
+    redis.set(ID_AGEN+"-token", JSON.stringify(jsondata), "EX",1440);
     return new Response(JSON.stringify(jsondata),{
         headers:{
             "Content-Type":"application.json"
